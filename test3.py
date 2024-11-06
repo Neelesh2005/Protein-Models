@@ -20,6 +20,7 @@ class ProteinSegment:
 
     def calculate_energy(self):
         energy = 0
+        #not accurate use CHARMM fu]orce field
         for i in range(len(self.sequence) - 1):
             distance = np.linalg.norm(self.positions[i] - self.positions[i + 1])
             energy += (1 / distance) ** 12 - 2 * (1 / distance) ** 6
