@@ -3,7 +3,7 @@ from Bio.PDB.vectors import calc_dihedral
 
 # Load the protein structure
 parser = PDBParser(QUIET=True)
-structure = parser.get_structure("8U1T", r"E:\Downloads\8u1t.pdb")
+structure = parser.get_structure("8U1T", r"E:\Downloads\8u1t (1).pdb")
 
 for model in structure:
     for chain in model:
