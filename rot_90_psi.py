@@ -30,18 +30,18 @@ def rotate_coordinates(coordinates:dict, angle_deg):
     return rotated_coordinates
 
 
-coordinates = {
-    'N': np.array([-3.363, 3.528, -18.128]),
-    'CA': np.array([-3.507, 2.361, -17.319]),
-    'C': np.array([-2.413, 2.231, -16.213]),
-    'O': np.array([-2.812, 1.917, -15.092]),
-    'CB': np.array([-3.856, 1.134, -18.197]),
-    'CG1': np.array([-4.893, 1.637, -19.223]),
-    'CG2': np.array([-4.328, -0.049, -17.31]),
-    'CD1': np.array([-5.68, 0.461, -19.898]),
-}
+# coordinates = {
+#     'N': np.array([-3.363, 3.528, -18.128]),
+#     'CA': np.array([-3.507, 2.361, -17.319]),
+#     'C': np.array([-2.413, 2.231, -16.213]),
+#     'O': np.array([-2.812, 1.917, -15.092]),
+#     'CB': np.array([-3.856, 1.134, -18.197]),
+#     'CG1': np.array([-4.893, 1.637, -19.223]),
+#     'CG2': np.array([-4.328, -0.049, -17.31]),
+#     'CD1': np.array([-5.68, 0.461, -19.898]),
+# }
 
 
-rotated_coordinates = rotate_coordinates(coordinates, 90)
-for atom, coord in rotated_coordinates.items():
-    print(f"{atom}: {coord}")
+# rotated_coordinates = rotate_coordinates(coordinates, 90)
+# for atom, coord in rotated_coordinates.items():
+#     print(f"{atom}: {coord}")
