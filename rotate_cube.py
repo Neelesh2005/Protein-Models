@@ -25,7 +25,7 @@ class RotateCube:
         return random.choice([1, -1])
 
     def save_coordinates_to_file(self):
-        with open("rotated_coordinates.txt", "a") as file:
+        with open("rotated_coordinates_LEU_4.txt", "a") as file:
             pdb_sequence = coords_to_pdb.coordinates_to_pdb(self.atom_Cords, self.atom_Info)
     
             file.write("Updated PDB sequence after rotation:\n")
@@ -72,25 +72,25 @@ if __name__ == "__main__":
     cube = single_amino_2.AminoCube(1, sequence={'name': 'A', 'phi': 180, 'psi': 180, 'chi1': 180})
     cube.place_at_random()  
     pdb_data = """
-ATOM     20  N   ILE A  13      -3.363   3.528 -18.128  1.00  0.00           N  
-ATOM     21  CA  ILE A  13      -3.507   2.361 -17.319  1.00  0.00           C  
-ATOM     22  C   ILE A  13      -2.413   2.231 -16.213  1.00  0.00           C  
-ATOM     23  O   ILE A  13      -2.812   1.917 -15.092  1.00  0.00           O  
-ATOM     24  CB  ILE A  13      -3.856   1.134 -18.197  1.00  0.00           C  
-ATOM     25  CG1 ILE A  13      -4.893   1.637 -19.223  1.00  0.00           C  
-ATOM     26  CG2 ILE A  13      -4.328  -0.049 -17.310  1.00  0.00           C  
-ATOM     27  CD1 ILE A  13      -5.680   0.461 -19.898  1.00  0.00           C  
-ATOM     28  H   ILE A  13      -3.122   3.308 -19.070  1.00  0.00           H  
-ATOM     29  HA  ILE A  13      -4.343   2.626 -16.688  1.00  0.00           H  
-ATOM     30  HB  ILE A  13      -2.937   0.808 -18.728  1.00  0.00           H  
-ATOM     31 HG12 ILE A  13      -5.595   2.363 -18.759  1.00  0.00           H  
-ATOM     32 HG13 ILE A  13      -4.460   2.172 -20.095  1.00  0.00           H  
-ATOM     33 HG21 ILE A  13      -3.665  -0.294 -16.453  1.00  0.00           H  
-ATOM     34 HG22 ILE A  13      -4.681  -0.883 -17.954  1.00  0.00           H  
-ATOM     35 HG23 ILE A  13      -5.335   0.139 -16.881  1.00  0.00           H  
-ATOM     36 HD11 ILE A  13      -4.925  -0.256 -20.287  1.00  0.00           H  
-ATOM     37 HD12 ILE A  13      -6.287  -0.046 -19.117  1.00  0.00           H  
-ATOM     38 HD13 ILE A  13      -6.288   0.616 -20.815  1.00  0.00           H  """  
+ATOM    154  N   LEU A  21      -3.609   1.050  -6.006  1.00  0.00           N  
+ATOM    155  CA  LEU A  21      -2.631   0.506  -5.161  1.00  0.00           C  
+ATOM    156  C   LEU A  21      -2.174   1.424  -4.005  1.00  0.00           C  
+ATOM    157  O   LEU A  21      -2.114   0.950  -2.883  1.00  0.00           O  
+ATOM    158  CB  LEU A  21      -1.457  -0.290  -5.846  1.00  0.00           C  
+ATOM    159  CG  LEU A  21      -1.750  -1.677  -6.376  1.00  0.00           C  
+ATOM    160  CD1 LEU A  21      -2.229  -2.585  -5.225  1.00  0.00           C  
+ATOM    161  CD2 LEU A  21      -2.741  -1.738  -7.518  1.00  0.00           C  
+ATOM    162  H   LEU A  21      -3.287   1.105  -6.948  1.00  0.00           H  
+ATOM    163  HA  LEU A  21      -3.189  -0.263  -4.648  1.00  0.00           H  
+ATOM    164  HB2 LEU A  21      -0.999   0.346  -6.634  1.00  0.00           H  
+ATOM    165  HB3 LEU A  21      -0.632  -0.399  -5.109  1.00  0.00           H  
+ATOM    166  HG  LEU A  21      -0.773  -2.097  -6.699  1.00  0.00           H  
+ATOM    167 HD11 LEU A  21      -3.309  -2.335  -5.145  1.00  0.00           H  
+ATOM    168 HD12 LEU A  21      -1.721  -2.335  -4.269  1.00  0.00           H  
+ATOM    169 HD13 LEU A  21      -2.102  -3.672  -5.420  1.00  0.00           H  
+ATOM    170 HD21 LEU A  21      -2.829  -2.810  -7.794  1.00  0.00           H  
+ATOM    171 HD22 LEU A  21      -2.377  -1.339  -8.490  1.00  0.00           H  
+ATOM    172 HD23 LEU A  21      -3.649  -1.177  -7.209  1.00  0.00           H     """  
     
     seq_data = pdb_to_coords.pdb_to_coordinates(pdb_data=pdb_data)
     
@@ -104,6 +104,6 @@ ATOM     38 HD13 ILE A  13      -6.288   0.616 -20.815  1.00  0.00           H  
         print(f"{atom}: {coord}")
     
     print("\nPerforming rotations:")
-    rotator.constant_rotation(10000)
+    rotator.constant_rotation(7000)
 
     print("Number of times the sequence was rotated:", rotator.rotation_count)
