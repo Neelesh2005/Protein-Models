@@ -87,11 +87,13 @@ def random_residue(pdb_file, chain_id):
 # Example usage
 try:
     res_num = random_residue(r"e:\protein-model\8U1T_correct.pdb", "A")
+    rot_angle = np.random.randint(90,180)
+
     rotate_phi_preserve_helix(
         pdb_file=r"e:\protein-model\8U1T_correct.pdb",
         chain_id="A",
         res_num=res_num,
-        angle_deg=90
+        angle_deg=rot_angle
     )
 except Exception as e:
     logging.error(f"Error: {str(e)}")
