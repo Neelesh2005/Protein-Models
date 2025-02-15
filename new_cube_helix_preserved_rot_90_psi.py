@@ -4,12 +4,11 @@ from Bio.PDB import PDBParser, PDBIO, PPBuilder
 from Bio.PDB.vectors import Vector, rotaxis2m
 from math import radians
 
-def rotate_psi_preserve_helix(pdb_file, chain_id, res_num, angle_deg):
+def rotate_psi_preserve_helix(structure,chain_id, res_num, angle_deg):
     """
     Rotates the psi (ψ) angle of a given residue while preserving the helical structure.
     """
-    parser = PDBParser(QUIET=True)
-    structure = parser.get_structure("helix", pdb_file)
+
     
     target_res = None
     res_list = []
@@ -54,28 +53,31 @@ def rotate_psi_preserve_helix(pdb_file, chain_id, res_num, angle_deg):
     # io.save(output_file)
     # print(f"Successfully rotated structure saved to {output_file}")
     
-def random_residue(pdb_file, chain_id):
-    """
-    Returns a random residue number from the given chain.
-    """
-    parser = PDBParser(QUIET=True)
-    structure = parser.get_structure("helix", pdb_file)
+# def random_residue(pdb_file, chain_id):
+#     """
+#     Returns a random residue number from the given chain.
+#     """
+#     parser = PDBParser(QUIET=True)
+#     structure = parser.get_structure("helix", pdb_file)
     
-    for model in structure:
-        for chain in model:
-            if chain.id == chain_id:
-                residues = list(chain.get_residues())
-                residue = residues[np.random.randint(1, len(residues))]  # Avoid first residue (no φ)
-                return residue.id[1]
+#     for model in structure:
+#         for chain in model:
+#             if chain.id == chain_id:
+#                 residues = list(chain.get_residues())
+#                 residue = residues[np.random.randint(1, len(residues))]  # Avoid first residue (no φ)
+#                 return residue.id[1]
 
-try:
-    res_num = random_residue(r"e:\protein-model\8U1T_correct.pdb", "A")
-    rot_angle = np.random.randint(90,180)
-    rotate_psi_preserve_helix(
-        pdb_file=r"e:\protein-model\8U1T_correct.pdb",
-        chain_id="A",
-        res_num=res_num,
-        angle_deg=rot_angle
-    )
-except Exception as e:
-    print(f"Error: {str(e)}")
+# try:
+#     res_num = random_residue(r"e:\protein-model\8U1T_correct.pdb", "A")
+#     rot_angle = np.random.randint(90,180)
+#     rotate_psi_preserve_helix(
+#         pdb_file=r"e:\protein-model\8U1T_correct.pdb",
+#         chain_id="A",
+#         res_num=res_num,
+#         angle_deg=rot_angle
+#     )
+# except Exception as e:
+#     print(f"Error: {str(e)}")
+parser = PDBParser(QUIET=True)
+structure = parser.get_structure("helix", r"e:\\protein-model\\8U1T_correct.pdb")
+rotate_psi_preserve_helix(structure,"A", 14, 90)

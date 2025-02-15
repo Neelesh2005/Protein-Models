@@ -12,9 +12,9 @@ class AminoCube:
         self.res_list = list(chain.get_residues())
         self.reset_cube()
         self.length = len(self.res_list)
-        self.index = np.random.randint(0,self.length)
-        self.res_num = self.res_list[self.index].get_id()[1]
-        self.sequence_name = self.res_list[self.index].get_resname()
+        self.indexes = np.random.randint(0,self.length,size=3)
+        self.res_nums = [self.res_list[index].get_id()[1] for index in self.indexes]
+        self.sequence_names = [self.res_list[index].get_resname() for index in self.indexes]
     def reset_cube(self):
         self.cube = np.full((3, 3, 3), None)
 
@@ -57,16 +57,19 @@ class AminoCube:
         self.cords = [x, y, z]
         self.cube[x, y, z] = self.sequence_name
         return self.cords
-
+    def rand_coords(self):
+        return random.randint(0, 2), random.randint(0, 2), random.randint(0, 2)
     def place_at_random(self) -> List[int]:
         self.reset_cube()
-        x = random.randint(0, 2)
-        y = random.randint(0, 2)
-        z = random.randint(0, 2)
+        prev_cords = None
+        for i in range(len(self.sequence_names)):
+            x, y, z = self.rand_coords()
+            if (x, y, z) == prev_cords:
+                continue
+            prev_cords = (x, y, z)
+            self.cords = [x, y, z]
+            self.cube[x, y, z] = self.sequence_names[i]
         
-        self.cords = [x, y, z]
-        self.cube[x, y, z] = self.sequence_name
-        return self.cords
 
     def place_at_coords(self, x: int, y: int, z: int) -> List[int]:
         if not (0 <= x <= 2 and 0 <= y <= 2 and 0 <= z <= 2):
@@ -94,6 +97,8 @@ if __name__ == "__main__":
     cube = AminoCube(r"e:\\protein-model\\8U1T_correct.pdb","A")
     cube.place_at_random()
     cube.display_cube()
+    print(cube.sequence_names)
+    print(cube.res_nums)
     # print("Corner placement:")
     # cube.place_at_edge_corner()
     # cube.display_cube()

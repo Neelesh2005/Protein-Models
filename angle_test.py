@@ -3,8 +3,7 @@ from Bio.PDB.vectors import calc_dihedral
 
 # Load the protein structure
 parser = PDBParser(QUIET=True)
-structure = parser.get_structure("8U1T", r"E:\protein-model\helix_rotated_phi_31_19_26_24_37_15_27_21_13_33_30_34_18_29_32_23_35_28_22_17_14_16_20_36_25_90deg.pdb")
-
+structure = parser.get_structure("8U1T", r"E:\protein-model\helix_rotated_psi_['PHE', 'ALA', 'LEU'].pdb")
 for model in structure:
     for chain in model:
         print(f"Chain {chain.id}, length {len(chain)}")
