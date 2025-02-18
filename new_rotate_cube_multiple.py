@@ -50,28 +50,28 @@ class RotateCube:
         elif axis == "y":
             self.cube[:, layer, :] = np.rot90(self.cube[:, layer, :], k=direction)
             layer_residues = set(self.cube[:, layer, :].flatten())
-
+            print(layer_residues)
             for res in layer_residues:
                 if res in self.residue_map and res not in rotated_residues:
                     self.rotation_count += 1
                     prev_struct = self.structure
                     print(f"Rotated {res} by phi angle")
                     self.structure = helix_preserved_rot_90_phi.rotate_phi_preserve_helix(
-                        prev_struct, self.chain_id, self.residue_map[res], direction * np.random.randint(90, 180)
+                        prev_struct, self.chain_id, self.residue_map[res], (direction * np.random.randint(0, 90) -180)
                     )
                     rotated_residues.add(res)
 
         elif axis == "z":
             self.cube[:, :, layer] = np.rot90(self.cube[:, :, layer], k=direction)
             layer_residues = set(self.cube[:, :, layer].flatten())
-
+            print(layer_residues)
             for res in layer_residues:
                 if res in self.residue_map and res not in rotated_residues:
                     self.rotation_count += 1
                     prev_struct = self.structure
                     print(f"Rotated {res} by psi angle")
                     self.structure = helix_preserved_rot_90_psi.rotate_psi_preserve_helix(
-                        prev_struct, self.chain_id, self.residue_map[res], direction * np.random.randint(90, 180)
+                        prev_struct, self.chain_id, self.residue_map[res], direction * np.random.randint(20, 30)
                     )
                     rotated_residues.add(res)
 
